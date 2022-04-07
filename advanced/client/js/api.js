@@ -59,3 +59,19 @@ export const updateTodo = async (name, id, done) => {
   const updatedTodo = await toJson(resp);
   return updatedTodo;
 };
+
+/**
+ * todoを削除
+ * @param {number} id
+ * @return {Promise<void>}
+ */
+export const deleteTodo = async (id) => {
+  const resp = await fetch(`${API_ENDPOINT}/todo/${String(id)}`, {
+    method: "DELETE",
+  });
+  if (resp.ok) {
+    return;
+  } else {
+    throw new Error(resp.status);
+  }
+};
