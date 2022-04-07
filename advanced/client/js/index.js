@@ -1,4 +1,4 @@
-import { getAllTodo, createTodo, updateTodo } from "./api.js";
+import { getAllTodo, createTodo, updateTodo, deleteTodo } from "./api.js";
 
 const main = async () => {
   await initTodo();
@@ -61,6 +61,13 @@ const initTodo = async () => {
     inputElement.addEventListener("change", async (e) => {
       const newDone = e.target.checked;
       await updateTodo(name, id, newDone);
+    });
+
+    const removeElemenet = liElement.lastElementChild;
+    removeElemenet.addEventListener("click", async () => {
+      await deleteTodo(id);
+
+      initTodo(); // 削除を描画に反映
     });
   });
 };
