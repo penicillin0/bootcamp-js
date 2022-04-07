@@ -61,9 +61,9 @@ export const updateTodo = async (name, id, done) => {
 };
 
 /**
- * todoを取得
+ * todoを削除
  * @param {number} id
- * @return {Promise<any>}
+ * @return {Promise<void>}
  */
 export const deleteTodo = async (id) => {
   const resp = await fetch(`${API_ENDPOINT}/todo/${String(id)}`, {
